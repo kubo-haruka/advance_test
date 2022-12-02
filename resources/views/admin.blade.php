@@ -102,7 +102,8 @@
   <!-- 検索画面 -->
   <h2>管理システム</h2>
   <div class="card">
-    <form action="search" method="post">
+    @csrf
+    <form action="{{ route('admin.search') }}" method="post">
       <div class="item">お名前</div>
       <input class="textbox" type="text">
       <div Class="item">性別</div>

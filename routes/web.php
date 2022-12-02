@@ -18,7 +18,7 @@ Route::get('/contacts', [ContactController::class, 'contacts']);
 Route::post('/contacts/confim', [ContactController::class, 'confim'])->name('contacts.confim');
 Route::post('/contacts/tanks', [ContactController::class, 'tanks'])->name('contacts.tanks');
 Route::get('/admin', [ContactController::class, 'admin']);
-Route::post('/find', [ContactController::class, 'find']);
+Route::post('/admin/search', [ContactController::class, 'search'])->name('admin.search');
 
 Route::get('/', function () {
   $faker = Faker\Factory::create('ja_JP');

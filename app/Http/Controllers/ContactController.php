@@ -32,16 +32,18 @@ class ContactController extends Controller
     public function admin()
     {
         $contact = Contacts::Paginate(10);
+        unset($contact['_token']);
         return view('admin', ['contacts'=>$contact]);
     }
 
     public function search(ContactsRequest $request)
     {
-        $author = Contacts::where('fullname', 'LIKE BINARY', "%{$request->contacts}%")->get();
+        $contact = Contacts::where('fullname', 'LIKE BINARY', "%{$request->contacts}%")->get();
         $param = [
             'input' => $request->input,
-            'author' => $author
+            'contacts' => $contact
         ];
-        return view('admin', $param);
+        unset($contact['_token']);
+        return view('search', $param);
     }    
 }
